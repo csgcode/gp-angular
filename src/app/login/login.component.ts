@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { NgZone } from '@angular/core';
 import { environment } from './../../environments/environment';
 import { AccountService } from './../_services/account.service';
 import { AuthenticationService } from './../_services';
@@ -17,6 +18,7 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private accountService: AccountService,
     private authService: AuthenticationService,
+    private ngZone: NgZone,
   ) { }
 
   ngOnInit(): void {
@@ -77,7 +79,9 @@ loginToApi(access_token){
   this.authService.login(access_token).pipe(first()).subscribe(
     data => {
       console.log('resopnse@@ login sucess', data);
-      this.router.navigate(['/']);
+      this.ngZone.run(() =>
+           this.router.navigate(['/dashboard']));
+      // this.router.navigate(['/dashboard']);
     }, 
     error =>{
       console.log('error', error);

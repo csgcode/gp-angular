@@ -45,7 +45,7 @@
                             <td><input #website type="text" value="{{ item?.website }}" data-attr="website_{{ item.id}}"></td>
                             <td><button class="btn-primary btn" data-id="{{ item.id }}" (click)="onUpdate(about, bio, website, item.id)">Update</button></td>
                           </tr>
-                          <tr *ngIf="pages.length == 0">
+                          <tr *ngIf="pages?.length == 0">
                               <td colspan="6" style="text-align: center;">Looks Like the Facebook Pages are not available for this account! or Add a few Pages!</td>
                           </tr>
                         </tbody>
