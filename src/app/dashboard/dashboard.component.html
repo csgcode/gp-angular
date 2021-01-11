@@ -1,39 +1,52 @@
-<div class="container-fluid" style="width: 90%; margin-top: 30px;">
+<nav class="navbar " style="background-color: rgb(68, 144, 146);">
+    <div class="container-fluid" style="color: white !important;">
+      <b class="navbar-brand" >Dashboard</b>
+      <form class="d-flex">
+        <!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"> -->
+        <button class="btn btn-outline-dark" (click)="logout()">Logout</button>
+      </form>
+    </div>
+</nav>
+<div class="container-fluid" style="width: 95%; margin-top: 30px;">
     <div class="row flex" style="min-height: 90vh;">
         <div class="col-md-2" style="background-color: cadetblue;">
             <div class="row">
-                <div class="col-md-12 labels" style=" padding: 25px 25px 25px 25px; color: white;"><h3>GrowthPlug</h3></div>
-                <div class="col-md-12 labels" style=" padding: 25px 25px 25px 25px;  color: white;"><h4>Dashboard</h4></div>
-                <div class="col-md-12 labels" style=" padding: 25px 25px 25px 25px; color: white;"><h4>GrowthPlug</h4></div>
-                <div class="col-md-12 labels" style=" padding: 25px 25px 25px 25px; color: white;"><h4>listing</h4></div>
-                <div class="col-md-12 labels" style=" padding: 25px 25px 25px 25px; color: white;"><h4>GrowthPlug</h4></div>
-                <div class="col-md-12 labels" style=" padding: 25px 25px 25px 25px; color: white;"><h4>GrowthPlug</h4></div>
-                <div class="col-md-12 labels" style=" padding: 25px 25px 25px 25px; color: white;"> Label 2 </div>
+                <div class="col-md-12 labels" style="background-color: rgb(72, 126, 128);"><h3>GrowthPlug</h3></div>
+                <div class="col-md-12 labels" ><h4><i class="fa fa-home icons" aria-hidden="true"></i>Dashboard</h4></div>
+                <div class="col-md-12 labels" ><h4><i class="fa fa-list-alt icons" aria-hidden="true"></i>Website</h4></div>
+                <div class="col-md-12 labels" ><h4><i class="fa fa-bookmark icons" aria-hidden="true"></i>Visitors</h4></div>
+                <div class="col-md-12 labels active" ><h4><i class="fa fa-list icons" aria-hidden="true"></i>Listings</h4></div>
+                <div class="col-md-12 labels" ><h4><i class="fa fa-calendar icons" aria-hidden="true"></i>Appointments</h4></div>
+                <div class="col-md-12 labels" ><h4><i class="fa fa-star icons" aria-hidden="true"></i>Reviews</h4></div>
+                <div class="col-md-12 labels" ><h4><i class="fa fa-cog icons" aria-hidden="true"></i>Settings</h4></div>
             </div>
         </div>
         <div class="col-md-10">
             <div class="row">
-                <div class="col-md-12" style="padding: 25px;">Facebook Listings</div>
-                <div class="col-md-10" style="background-color: white; height: 100%;">
+                <div class="col-md-12" style="text-align: center;"><div style="width: 100%; background-color:rgb(131, 221, 224); padding: 25px"><h3>Page Listings</h3></div></div>
+                <div class="col-md-12" style="white; height: 100%;">
                     <table class="table">
                         <thead class="thead-dark">
                           <tr>
                             <th scope="col">#</th>
                             <th scope="col">Name</th>
                             <th scope="col">About</th>
-                            <th scope="col">bio</th>
-                            <th scope="col">website</th>
+                            <th scope="col">Bio</th>
+                            <th scope="col">Website</th>
                             <th scope="col">Actions</th>
                           </tr>
                         </thead>
                         <tbody>
-                          <tr *ngFor=" let item of pages" #form>
-                            <th scope="row">1</th>
+                          <tr *ngFor=" let item of pages; let i = index" #form>
+                            <th scope="row">{{i + 1}}</th>
                             <td>{{ item?.name }}</td>
                             <td><input #about type="text" class="data-{{item.id}}" value="{{ item?.about }}" data-attr="about_{{ item.id}}"></td>
                             <td><input #bio type="text" class="data-{{item.id}}" value="{{ item?.bio }}" data-attr="bio_{{ item.id}}"></td>
                             <td><input #website type="text" value="{{ item?.website }}" data-attr="website_{{ item.id}}"></td>
                             <td><button class="btn-primary btn" data-id="{{ item.id }}" (click)="onUpdate(about, bio, website, item.id)">Update</button></td>
+                          </tr>
+                          <tr *ngIf="pages.length == 0">
+                              <td colspan="6" style="text-align: center;">Looks Like the Facebook Pages are not available for this account! or Add a few Pages!</td>
                           </tr>
                         </tbody>
                       </table> 

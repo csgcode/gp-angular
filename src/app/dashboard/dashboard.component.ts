@@ -75,12 +75,17 @@ updatePages(data) {
     data => {
       this.pages = data['data'];
       console.log('hhaha updated', this.pages);
+      alert("Page data sucessfully updated");
     },
     error => {
       alert("something went wrong! Try Again Later");
       console.log("error on fb-pages-update", error);
     }
   )
+}
+
+logout() {
+  this.authService.logout()
 }
 
 }
