@@ -1,1 +1,47 @@
-<p>dashboard works!</p>
+<div class="container-fluid" style="width: 90%; margin-top: 30px;">
+    <div class="row flex" style="min-height: 90vh;">
+        <div class="col-md-2" style="background-color: cadetblue;">
+            <div class="row">
+                <div class="col-md-12 labels" style=" padding: 25px 25px 25px 25px; color: white;"><h3>GrowthPlug</h3></div>
+                <div class="col-md-12 labels" style=" padding: 25px 25px 25px 25px;  color: white;"><h4>Dashboard</h4></div>
+                <div class="col-md-12 labels" style=" padding: 25px 25px 25px 25px; color: white;"><h4>GrowthPlug</h4></div>
+                <div class="col-md-12 labels" style=" padding: 25px 25px 25px 25px; color: white;"><h4>listing</h4></div>
+                <div class="col-md-12 labels" style=" padding: 25px 25px 25px 25px; color: white;"><h4>GrowthPlug</h4></div>
+                <div class="col-md-12 labels" style=" padding: 25px 25px 25px 25px; color: white;"><h4>GrowthPlug</h4></div>
+                <div class="col-md-12 labels" style=" padding: 25px 25px 25px 25px; color: white;"> Label 2 </div>
+            </div>
+        </div>
+        <div class="col-md-10">
+            <div class="row">
+                <div class="col-md-12" style="padding: 25px;">Facebook Listings</div>
+                <div class="col-md-10" style="background-color: white; height: 100%;">
+                    <table class="table">
+                        <thead class="thead-dark">
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">About</th>
+                            <th scope="col">bio</th>
+                            <th scope="col">website</th>
+                            <th scope="col">Actions</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor=" let item of pages" #form>
+                            <th scope="row">1</th>
+                            <td>{{ item?.name }}</td>
+                            <td><input #about type="text" class="data-{{item.id}}" value="{{ item?.about }}" data-attr="about_{{ item.id}}"></td>
+                            <td><input #bio type="text" class="data-{{item.id}}" value="{{ item?.bio }}" data-attr="bio_{{ item.id}}"></td>
+                            <td><input #website type="text" value="{{ item?.website }}" data-attr="website_{{ item.id}}"></td>
+                            <td><button class="btn-primary btn" data-id="{{ item.id }}" (click)="onUpdate(about, bio, website, item.id)">Update</button></td>
+                          </tr>
+                        </tbody>
+                      </table> 
+                </div>    
+            </div>
+        </div>
+        
+        
+    </div>
+
+</div>
